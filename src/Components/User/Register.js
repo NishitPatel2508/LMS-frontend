@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './register.css'
 import axios from  "axios";
 import {  useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
 import Select from '@mui/material/Select';
+
 import {Country} from 'country-state-city';
 import {State} from 'country-state-city';
 import {City} from 'country-state-city';
 const Register = (props) => {
     //Input Fields
-    // let countryName
     let country_isoCode
- 
-    let stateCode
     let states 
     let countrydata
     let cities 
@@ -65,34 +65,10 @@ const Register = (props) => {
     const genderInput = [ 'Male', 'Female','Others' ]
     const userTypeInput = [ 'Student'  ,'Employee' ,'Others']
     
-    //Error Message
-    const [open, setOpen] = React.useState(false);
-    const handleClose = (event, reason) => {
-    debugger
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false);
-    };
-
-    //Success
-    const [openSuccess, setOpenSuccess] = React.useState(false);
-
    
-
-    const handleCloseSuccess = (event?: React.SyntheticEvent | Event, reason?: string) => {
-      if (reason === 'clickaway') {
-        return;
-      }
-
-      setOpenSuccess(false);
-    };
-
-
     //Validation
     const isPasswordValid = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
     const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i;
-    const isPhoneNoValid = /^\d{10}$/;
 
     const navigate = useNavigate()
   
@@ -141,7 +117,6 @@ const Register = (props) => {
         if((!isValidEmail.test(email))){
           setEmailError("Please enter valid email.")
         } 
-          
         
     }
     const onChangePassword = (e) =>{
@@ -164,8 +139,7 @@ const Register = (props) => {
     }
 
     const onChangemobile = (e) =>{
-        setMobile (e.target.value) 
-       
+          setMobile (e.target.value) 
           if(e.target.value.length < 10||e.target.value.length > 10){
             setMobileError("Phone Number must be in 10 digits.")
             
@@ -173,11 +147,6 @@ const Register = (props) => {
           else{
             setMobileError('')
           }
-        
-
-          // setMobileError('')
-        
-        
     } 
     const onChangeUserType = (e) =>{
         setUserType (e.target.value)
@@ -206,12 +175,6 @@ const Register = (props) => {
     //   },[])
     const handleSubmit = async(e) =>{
         e.preventDefault();
-        if(error){
-          setOpen(true);
-        } 
-        if(!error){
-          setOpenSuccess(true);
-        }
       
         if(!firstName){
           setFirstNameError("Firstname is required.")
@@ -275,21 +238,15 @@ const Register = (props) => {
             )
             .then(result => {
               console.log(result);
-              <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>
-              <Alert
-                onClose={handleCloseSuccess}
-                severity="success"
-                variant="filled"
-                sx={{ width: '100%' }}
-              >
-                User Registered Successfully!
-              </Alert>
-            </Snackbar>
-              
+              toast.success("User Registration successfully !");
+              setTimeout(() => {
+                navigate("/home")
+              }, 7000);
             })
             .catch(err => {
               console.log(err.response.data)
               setError(err.response.data.message)
+              toast.error(err.response.data.message)
               setTimeout(() => {
                 setError("")
               }, 5000);
@@ -302,27 +259,9 @@ const Register = (props) => {
   return (
     <div className='container register'>
         <div className=' '>
-          { error && 
-        
-            <Snackbar
-              open={open}
-              autoHideDuration={5000}
-              onClose={handleClose}
-              message={error}
-            />
-            }
-         
-            {/* { error && 
-            <div className="alert alert-warning alert-dismissible fade show" role="alert">
-              <strong>{error}</strong>
-              <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            } */}
             <form className="row " onSubmit={handleSubmit}>
-         
                 <h1 className='text-center'>Register</h1>
                 <div className='row mt-3'>
-                 
                   <div className="col-md-6 ">
                       <TextField fullWidth 
                         id="outlined-basic" 
@@ -536,7 +475,7 @@ const Register = (props) => {
                   <button className="btn btn-primary " type="submit">Sign Up</button>
                 </div>
                 </div>
-
+                <ToastContainer />
             </form>
         </div>
     </div>
