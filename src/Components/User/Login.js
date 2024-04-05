@@ -56,47 +56,6 @@ const Login = () => {
     //Login Validation
     const validUser = []
    
-    const checkEmailExistOrNot = (alldata) =>{
-        alldata.map((singleField) =>{
-            console.log(singleField.email);
-            // if(singleField.email === email){
-            //     setEmailError("")
-                
-            // } else{
-            //     toast.error("Email doesn't match")
-            //     // setEmailError("Email doesn't match")
-            //     console.log("Email doesn't match");
-            // }
-            // if(singleField.password === password){
-            //     setPasswordError("");
-            //     alert("Valid Password")
-                
-            // }else{
-            //     toast.error("Password doesn't match")
-            //     // setPasswordError("Password doesn't match");
-            //     console.log("Password doesn't match");
-            // }
-            if(singleField.email === email){
-                validUser = singleField;
-                console.log(validUser);
-                if(validUser){
-                    if(validUser.password === password){
-                        toast.success("Login successfully !");
-                    } else {
-                        toast.error("Invalid Password!");
-                    }
-                } else {
-                    toast.error("Please enter valid email id");
-                }
-               
-                
-            }else{
-                toast.error("Invalid EmailId and Password")
-                // setEmailError("Email doesn't match")
-                console.log("Email doesn't match");
-            }
-        })
-    }
     const handleSubmit = async(e) =>{
         e.preventDefault()
         if(!email){
@@ -106,16 +65,19 @@ const Login = () => {
             setPasswordError("Password is required")
         }
         if(email && password){
-            debugger
+            
             const header = {"Access-control-Allow-Origin":"*"}
-            let result = await axios.get('http://localhost:5000/users',{
+            let result = await axios.post('http://localhost:5000/user/login',{
                 email:email,
                 password:password
             })
             .then(result =>{
+                console.log(result);
                 console.log(result.data.user)
-                checkEmailExistOrNot(result.data.user)
+                console.log(result.message)
+                console.log(result.data.message)
                 console.log(email,password)
+                toast.success(result.data.message)
                 setTimeout(() => {
                   navigate("/home")
                 }, 7000);
@@ -179,7 +141,7 @@ const Login = () => {
                 <Link href="#" underline="none">Forgot password?</Link>
             </Typography>
             <Typography> 
-                <Link href="#" underline="none">Create new account</Link>
+                <Link  href="/"  underline="none">Create new account</Link>
             </Typography>
         </Grid>
         <ToastContainer />
