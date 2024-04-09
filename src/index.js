@@ -4,9 +4,11 @@ import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Register from './Components/User/Register';
+import Register from './Components/User/Signup/Register';
 import Home from './Components/User/Home';
-import Login from './Components/User/Login';
+import Login from './Components/User/Login/Login';
+import ForgotPassword from './Components/User/ForgotPassword/ForgotPassword';
+import SetNewPassword from './Components/User/NewPassword/SetNewPassword';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function App(){
   return(
@@ -15,6 +17,8 @@ function App(){
         {/* <Route index path='/' element={<Country/>}></Route> */}
         <Route inedx path='/' element={<Register/>}></Route>
         <Route inedx path='/login' element={<Login/>}></Route>
+        <Route inedx path='/forgotpassword' element={<ForgotPassword/>}></Route>
+        <Route inedx path='/newpassword' element={<SetNewPassword/>}></Route>
         <Route path='/home' element={<Home/>}></Route>
       </Routes>
     </BrowserRouter>
