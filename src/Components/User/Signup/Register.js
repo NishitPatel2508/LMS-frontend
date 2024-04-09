@@ -240,8 +240,8 @@ const Register = (props) => {
               console.log(result);
               toast.success("User Registration successfully !");
               setTimeout(() => {
-                navigate("/home")
-              }, 7000);
+                navigate("/login")
+              }, 6000);
             })
             .catch(err => {
               console.log(err.response.data)

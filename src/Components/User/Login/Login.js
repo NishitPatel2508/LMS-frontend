@@ -138,7 +138,7 @@ const Login = () => {
             >
             Sign in</Button>
             <Typography >
-                <Link href="#" underline="none">Forgot password?</Link>
+                <Link href="/forgotpassword" underline="none">Forgot password?</Link>
             </Typography>
             <Typography> 
                 <Link  href="/"  underline="none">Create new account</Link>
