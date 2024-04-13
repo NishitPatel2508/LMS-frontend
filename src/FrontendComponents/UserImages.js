@@ -3,7 +3,7 @@ import styles from "./UserImages.module.css";
 const UserImages = () => {
   return (
     <div className={styles.userImages}>
-      <img className={styles.userImagesChild} alt="" src="/group-515.svg" />
+      <img className={styles.userImagesChild} alt="" src="E:\LMS\LMS-frontend\LMS-frontend\src\FrontendComponents\icons\child.png" />
       <div className={styles.placeholder} />
       <div className={styles.userImage}>
         <div className={styles.placeholder1} />
