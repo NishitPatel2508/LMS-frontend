@@ -11,8 +11,8 @@ const ForgotPassword = () => {
     const [OTPNo, setOTPNo] = useState("")
     const [emailError, setEmailError] = useState("")
     const [otpError, setOtpError] = useState("")
-    const [fieldName,setFieldName] = useState("Send OTP")
-
+    const [fieldName,setFieldName] = useState("Verfiy Email")
+    const [OtpFieldShow,setOtpFieldShow] = useState(false)
     //
     const [show, setShow] = useState(false);
     
@@ -35,12 +35,7 @@ const ForgotPassword = () => {
         
     }
     
-    const OtpValidation = (otpNo) =>{
-        console.log(otpNo);
-    //    realOtp = otpNo
-    //    console.log(realOtp);
-        
-    }
+  
  
   
  
@@ -81,7 +76,8 @@ const ForgotPassword = () => {
         }
        
         if(!otp && email ){
-            setFieldName('Set new password')
+            
+           
             let result = await axios.post('http://localhost:5000/user/forgotpassword',{
                 email:email,
                 otp:otp
@@ -89,8 +85,10 @@ const ForgotPassword = () => {
             .then(result =>{
                 console.log(result);
                 toast.success(result.data.message)
+                 setOtpFieldShow(true)
+                 setFieldName('Varify OTP')
                 // setOtp(result.data.data.otp)
-                OtpValidation(result.data.data.otp)  
+                 
                 setOTPNo(result.data.data.otp)  
               
             })
@@ -104,6 +102,8 @@ const ForgotPassword = () => {
             if(OTPNo == otp){
                 toast.success("OTP is Varified")
                 navigate('/newpassword')
+            } else{
+                toast.error("OTP is invalid")
             }
         }
     
@@ -138,7 +138,9 @@ const ForgotPassword = () => {
                 error={emailError}
                 helperText={emailError}
             />
-            <TextField 
+            { 
+                OtpFieldShow &&
+                <TextField 
                 className='otpFieldHide'
                 id="otp" 
                 label="OTP" 
@@ -152,6 +154,8 @@ const ForgotPassword = () => {
                 error={otpError}
                 helperText={otpError}
             />
+            }
+            
 
             <Button 
                 type='submit'
