@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './FrontendComponents/global.css'
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
@@ -9,6 +10,7 @@ import Home from './Components/User/Home';
 import Login from './Components/User/Login/Login';
 import ForgotPassword from './Components/User/ForgotPassword/ForgotPassword';
 import NewPassword from "./Components/User/NewPassword/NewPassword";
+import DesignFile from "./FrontendComponents/DesignFile"
 // import NewPassword from './Components/User/NewPassword/NewPassword';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function App(){
@@ -16,7 +18,7 @@ function App(){
     <BrowserRouter>
       <Routes>
         {/* <Route index path='/' element={<Country/>}></Route> */}
-        <Route inedx path='/' element={<Register/>}></Route>
+        <Route inedx path='/' element={<DesignFile/>}></Route>
         <Route inedx path='/login' element={<Login/>}></Route>
         <Route inedx path='/forgotpassword' element={<ForgotPassword/>}></Route>
         <Route inedx path='/newpassword' element={<NewPassword/>}></Route>

@@ -37,7 +37,7 @@ const DesignFile = () => {
               className={styles.progressCircleIcon}
               loading="lazy"
               alt=""
-              src="/progress-circle.svg"
+              src="./icons/progress-circle.svg"
             />
             <b className={styles.k}>5K+</b>
             <div className={styles.onlineCourses}>Online Courses</div>
@@ -56,7 +56,7 @@ const DesignFile = () => {
           </div>
           <div className={styles.div2}>
             <div className={styles.wrapperIcon1}>
-              <img className={styles.icon1} alt="" src="/icon-1.svg" />
+              <img className={styles.icon1} alt="" src="../src/icons/icons-1.svg" />
             </div>
             <div className={styles.tutors}>Tutors</div>
             <b className={styles.tutorsCount}>250+</b>
