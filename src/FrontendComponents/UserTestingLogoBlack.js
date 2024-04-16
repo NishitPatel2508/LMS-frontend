@@ -6,7 +6,7 @@ const UserTestingLogoBlack = () => {
       className={styles.usertestingLogoBlack}
       loading="lazy"
       alt=""
-      src="/usertesting-logo--black.svg"
+      src="/images/UserTesting (logo — Black).png"
     />
   );
 };

@@ -13,18 +13,20 @@ import Section1 from "./Section1";
 import Section from "./Section";
 
 import styles from "./DesignFile.module.css";
+// import child from "../images"
+// import OnlineEducation from "./images"
 
 const DesignFile = () => {
   return (
     <div className={styles.designFile}>
       <section className={styles.navigation}>
-        <img className={styles.blurIcon} alt="" src="/blur.svg" />
+        <img className={styles.blurIcon} alt=""  />
         <img
           className={styles.navigationChild}
           alt=""
-          src="/group-499@2x.png"
+          // src="/images/Group515.png"
         />
-        <img className={styles.navigationItem} alt="" src="/group-498@2x.png" />
+        <img className={styles.navigationItem} alt=""   src="/images/Group458.png"  />
       </section>
       <div className={styles.designFileChild} />
       <section className={styles.header}>
@@ -37,8 +39,9 @@ const DesignFile = () => {
               className={styles.progressCircleIcon}
               loading="lazy"
               alt=""
-              src="./icons/progress-circle.svg"
+              src="/images/Progress-circle.png"
             />
+            
             <b className={styles.k}>5K+</b>
             <div className={styles.onlineCourses}>Online Courses</div>
           </div>
@@ -48,7 +51,7 @@ const DesignFile = () => {
                 className={styles.icon}
                 loading="lazy"
                 alt=""
-                src="/icon.svg"
+                src="/images/icon-2.png" 
               />
             </div>
             <b className={styles.k1}>2K+</b>
@@ -56,8 +59,8 @@ const DesignFile = () => {
           </div>
           <div className={styles.div2}>
             <div className={styles.wrapperIcon1}>
-              <img className={styles.icon1} alt="" src="../src/icons/icons-1.svg" />
-            </div>
+              <img className={styles.icon1} alt=""    src="/images/icon.png"/>
+            </div> 
             <div className={styles.tutors}>Tutors</div>
             <b className={styles.tutorsCount}>250+</b>
           </div>
@@ -121,7 +124,7 @@ const DesignFile = () => {
                   className={styles.frameChild}
                   loading="lazy"
                   alt=""
-                  src="/group-518.svg"
+                  src="/images/Group518.png"
                 />
                 <div className={styles.publicSpeaking}>Public Speaking</div>
               </div>
@@ -130,7 +133,7 @@ const DesignFile = () => {
                   className={styles.briefcaseIcon}
                   loading="lazy"
                   alt=""
-                  src="/briefcase.svg"
+                  src="/images/Briefcase.png"
                 />
                 <div className={styles.careerOriented}>Career-Oriented</div>
               </div>
@@ -139,7 +142,7 @@ const DesignFile = () => {
                   className={styles.ideaIcon}
                   loading="lazy"
                   alt=""
-                  src="/idea.svg"
+                  src="/images/idea.svg"
                 />
                 <div className={styles.creativeThinking}>Creative Thinking</div>
               </div>
@@ -155,7 +158,7 @@ const DesignFile = () => {
             className={styles.groupIcon}
             loading="lazy"
             alt=""
-            src="/group.svg"
+            src="/images/dl.png"
           />
           <CodecovLogoBlack />
           <UserTestingLogoBlack />

@@ -12,6 +12,7 @@ import ForgotPassword from './Components/User/ForgotPassword/ForgotPassword';
 import NewPassword from "./Components/User/NewPassword/NewPassword";
 import DesignFile from "./FrontendComponents/DesignFile"
 // import NewPassword from './Components/User/NewPassword/NewPassword';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function App(){
   return(

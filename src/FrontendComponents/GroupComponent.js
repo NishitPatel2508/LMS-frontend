@@ -19,7 +19,7 @@ import {
                 className={styles.sampleLogoChild}
                 loading="lazy"
                 alt=""
-                src="/group-296.svg"
+                src="/images/Group515.png"
               />
               <div className={styles.edCircle}>Ed-Circle.</div>
             </div>
