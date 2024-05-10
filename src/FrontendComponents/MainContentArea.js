@@ -16,7 +16,7 @@ const MainContentArea = () => {
         <div className={styles.learningFeatures}>
           <div className={styles.learningCategories}>
             <CategoryCards
-              icon="/icon-2@2x.png"
+              icon="/images/ue.png"
               userExperience="User Experience"
               lessonsOnDesignThatCoverT="Lessons on design that cover the most recent developments."
               vector="/vector.svg"
@@ -25,7 +25,7 @@ const MainContentArea = () => {
               <div className={styles.frameParent}>
                 <div className={styles.frameGroup}>
                   <div className={styles.iconWrapper}>
-                    <img className={styles.icon} alt="" src="/icon-3.svg" />
+                    <img className={styles.icon} alt="" src="/images/wd.png" />
                   </div>
                   <b className={styles.webDevelopment}>Web Development</b>
                 </div>
@@ -36,11 +36,15 @@ const MainContentArea = () => {
               </div>
               <div className={styles.learnMoreParent}>
                 <div className={styles.learnMore}>Learn More</div>
-                <img className={styles.vectorIcon} alt="" src="/vector-1.svg" />
+                <img
+                  className={styles.vectorIcon}
+                  alt=""
+                  src="/images/market.png"
+                />
               </div>
             </div>
             <CategoryCards
-              icon="/icon-4@2x.png"
+              icon="/images/m.png"
               userExperience="Marketing"
               lessonsOnDesignThatCoverT="Marketing courses that cover the most recent marketing trends"
               vector="/vector-1.svg"

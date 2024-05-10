@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./Section1.module.css";
 
 const Section1 = () => {
+  const navigate = useNavigate();
+  const handleAboutUs = () => {
+    navigate("/aboutus");
+  };
+  const handleContactUs = () => {
+    navigate("/contactus");
+  };
   return (
     <div className={styles.section}>
       <div className={styles.container}>
@@ -10,9 +18,9 @@ const Section1 = () => {
               <img
                 className={styles.sampleLogoChild}
                 alt=""
-                src="/group-296-2.svg"
+                src="/images/brainwave-symbol.svg"
               />
-              <div className={styles.edCircle}>Ed-Circle.</div>
+              <div className={styles.edCircle}>Brainwave</div>
             </div>
             <div className={styles.supportingText}>
               Top learning experiences that create more talent in the world.
@@ -43,20 +51,7 @@ const Section1 = () => {
                     </div>
                   </div>
                 </div>
-                <div className={styles.footerLink3}>
-                  <div className={styles.button3}>
-                    <div className={styles.buttonBase3}>
-                      <div className={styles.text3}>Tutorials</div>
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.footerLink4}>
-                  <div className={styles.button4}>
-                    <div className={styles.buttonBase4}>
-                      <div className={styles.text4}>Pricing</div>
-                    </div>
-                  </div>
-                </div>
+
                 <div className={styles.footerLink5}>
                   <div className={styles.button5}>
                     <div className={styles.buttonBase5}>
@@ -100,14 +95,18 @@ const Section1 = () => {
                 <div className={styles.footerLink10}>
                   <div className={styles.button10}>
                     <div className={styles.buttonBase10}>
-                      <div className={styles.text10}>About us</div>
+                      <div className={styles.text10} onClick={handleAboutUs}>
+                        About us
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div className={styles.footerLink11}>
                   <div className={styles.button11}>
                     <div className={styles.buttonBase11}>
-                      <div className={styles.text11}>Careers</div>
+                      <div className={styles.text11} onClick={handleContactUs}>
+                        Contact Us
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -173,31 +172,52 @@ const Section1 = () => {
                 <div className={styles.footerLink19}>
                   <div className={styles.button19}>
                     <div className={styles.buttonBase19}>
-                      <div className={styles.text20}>Twitter</div>
+                      {/* <div>Twitter</div> */}
+                      <a
+                        className={styles.text20}
+                        href="https://twitter.com/home"
+                        target="_blank"
+                      >
+                        Twitter
+                      </a>
                     </div>
                   </div>
                 </div>
                 <div className={styles.footerLink20}>
                   <div className={styles.button20}>
                     <div className={styles.buttonBase20}>
-                      <div className={styles.text21}>LinkedIn</div>
+                      <a
+                        className={styles.text20}
+                        href="https://www.linkedin.com/in/nishit-patel-6650b1188/"
+                        target="_blank"
+                      >
+                        LinkedIn
+                      </a>
+                      {/* <div className={styles.text21}></div> */}
                     </div>
                   </div>
                 </div>
                 <div className={styles.footerLink21}>
                   <div className={styles.button21}>
                     <div className={styles.buttonBase21}>
-                      <div className={styles.text22}>GitHub</div>
+                      <a
+                        className={styles.text20}
+                        href="https://github.com/NishitPatel2508/"
+                        target="_blank"
+                      >
+                        GitHub
+                      </a>
+                      {/* <div className={styles.text22}></div> */}
                     </div>
                   </div>
                 </div>
-                <div className={styles.footerLink22}>
+                {/* <div className={styles.footerLink22}>
                   <div className={styles.button22}>
                     <div className={styles.buttonBase22}>
                       <div className={styles.text23}>Dribbble</div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className={styles.footerLink23}>
                   <div className={styles.button23}>
                     <div className={styles.buttonBase23}>
@@ -311,4 +331,3 @@ const Section1 = () => {
 };
 
 export default Section1;
-

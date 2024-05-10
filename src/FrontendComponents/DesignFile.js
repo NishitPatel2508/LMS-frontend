@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-
+import Header from "./Header";
 import GroupComponent from "./GroupComponent";
 import CodecovLogoBlack from "./CodecovLogoBlack";
 import UserTestingLogoBlack from "./UserTestingLogoBlack";
@@ -13,33 +13,36 @@ import Section1 from "./Section1";
 import Section from "./Section";
 
 import styles from "./DesignFile.module.css";
+// import child from "../images"
+// import OnlineEducation from "./images"
 
 const DesignFile = () => {
   return (
     <div className={styles.designFile}>
       <section className={styles.navigation}>
-        <img className={styles.blurIcon} alt="" src="/blur.svg" />
+        <img className={styles.blurIcon} alt="" />
+
         <img
-          className={styles.navigationChild}
+          className={styles.navigationItem}
           alt=""
-          src="/group-499@2x.png"
+          src="/images/Group458.png"
         />
-        <img className={styles.navigationItem} alt="" src="/group-498@2x.png" />
       </section>
       <div className={styles.designFileChild} />
       <section className={styles.header}>
         <div className={styles.headerChild} />
         <div className={styles.maskGroup}>
-          <GroupComponent />
+          <Header />
           <div className={styles.maskGroupChild} />
           <div className={styles.div}>
             <img
               className={styles.progressCircleIcon}
               loading="lazy"
               alt=""
-              src="./icons/progress-circle.svg"
+              src="/images/Progress-circle.png"
             />
-            <b className={styles.k}>5K+</b>
+
+            <b className={styles.k}>50+</b>
             <div className={styles.onlineCourses}>Online Courses</div>
           </div>
           <div className={styles.div1}>
@@ -48,15 +51,15 @@ const DesignFile = () => {
                 className={styles.icon}
                 loading="lazy"
                 alt=""
-                src="/icon.svg"
+                src="/images/icon-2.png"
               />
             </div>
-            <b className={styles.k1}>2K+</b>
-            <div className={styles.videoCourses}>Video Courses</div>
+            <b className={styles.k1}>2000+</b>
+            <div className={styles.videoCourses}>Videoes</div>
           </div>
           <div className={styles.div2}>
             <div className={styles.wrapperIcon1}>
-              <img className={styles.icon1} alt="" src="../src/icons/icons-1.svg" />
+              <img className={styles.icon1} alt="" src="/images/icon.png" />
             </div>
             <div className={styles.tutors}>Tutors</div>
             <b className={styles.tutorsCount}>250+</b>
@@ -84,6 +87,7 @@ const DesignFile = () => {
               </div>
               <div className={styles.heroButtons}>
                 <Button
+                  href="/allCourses"
                   className={styles.button}
                   disableElevation={true}
                   variant="contained"
@@ -98,21 +102,6 @@ const DesignFile = () => {
                 >
                   Get Started
                 </Button>
-                <Button
-                  className={styles.button1}
-                  disableElevation={true}
-                  variant="contained"
-                  sx={{
-                    textTransform: "none",
-                    color: "#6941c6",
-                    fontSize: "18",
-                    background: "#f4ebff",
-                    borderRadius: "8px",
-                    "&:hover": { background: "#f4ebff" },
-                  }}
-                >
-                  Get free trial
-                </Button>
               </div>
             </div>
             <div className={styles.featureCards}>
@@ -121,7 +110,7 @@ const DesignFile = () => {
                   className={styles.frameChild}
                   loading="lazy"
                   alt=""
-                  src="/group-518.svg"
+                  src="/images/Group518.png"
                 />
                 <div className={styles.publicSpeaking}>Public Speaking</div>
               </div>
@@ -130,18 +119,9 @@ const DesignFile = () => {
                   className={styles.briefcaseIcon}
                   loading="lazy"
                   alt=""
-                  src="/briefcase.svg"
+                  src="/images/Briefcase.png"
                 />
                 <div className={styles.careerOriented}>Career-Oriented</div>
-              </div>
-              <div className={styles.ideaParent}>
-                <img
-                  className={styles.ideaIcon}
-                  loading="lazy"
-                  alt=""
-                  src="/idea.svg"
-                />
-                <div className={styles.creativeThinking}>Creative Thinking</div>
               </div>
             </div>
           </div>
@@ -155,7 +135,7 @@ const DesignFile = () => {
             className={styles.groupIcon}
             loading="lazy"
             alt=""
-            src="/group.svg"
+            src="/images/dl.png"
           />
           <CodecovLogoBlack />
           <UserTestingLogoBlack />
@@ -172,6 +152,6 @@ const DesignFile = () => {
         <Section />
       </footer>
     </div>
-)
-}
+  );
+};
 export default DesignFile;

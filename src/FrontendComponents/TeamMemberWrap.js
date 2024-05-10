@@ -64,13 +64,9 @@ const TeamMemberWrap = ({
               className={styles.socialIcon}
               loading="lazy"
               alt=""
-              src="/social-icon.svg"
+              src="/images/m.png"
             />
-            <img
-              className={styles.socialIcon1}
-              alt=""
-              src="/social-icon-1.svg"
-            />
+            <img className={styles.socialIcon1} alt="" src="/images/m.png" />
           </div>
         </div>
       </div>

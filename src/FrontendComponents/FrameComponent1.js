@@ -45,9 +45,9 @@ const FrameComponent1 = () => {
                   <img
                     className={styles.sampleLogoChild}
                     alt=""
-                    src="/group-296.svg"
+                    src="/images/brainwave-symbol.svg"
                   />
-                  <div className={styles.edCircle}>Ed-Circle.</div>
+                  <div className={styles.edCircle}>Brainwave.</div>
                 </div>
                 <h1 className={styles.quote}>
                   Courses was fantastic! It is Master platform for those looking
@@ -57,7 +57,7 @@ const FrameComponent1 = () => {
                   <img
                     className={styles.avatarIcon}
                     alt=""
-                    src="/avatar-7@2x.png"
+                    src="/images/i1.png"
                   />
                   <div className={styles.textAndSupportingText}>
                     <div className={styles.text}>Jacob Jones</div>
@@ -70,11 +70,10 @@ const FrameComponent1 = () => {
             </div>
           </div>
         </div>
-        <img className={styles.frameChild} alt="" src="/group-521-2.svg" />
+        {/* <img className={styles.frameChild} alt="" src="/group-521-2.svg" /> */}
       </div>
     </section>
   );
 };
 
 export default FrameComponent1;
-

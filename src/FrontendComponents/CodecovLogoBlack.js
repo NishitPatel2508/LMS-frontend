@@ -6,7 +6,7 @@ const CodecovLogoBlack = () => {
       className={styles.codecovLogoBlack}
       loading="lazy"
       alt=""
-      src="/codecov-logo--black.svg"
+      src="/images/Codecov (logo — Black).png"
     />
   );
 };

@@ -48,8 +48,9 @@ const BlogPostCard = ({
           <img
             className={styles.mediaPlaceholderIcon}
             alt=""
-            src="/media-placeholder.svg"
+            src="./images/med"
           />
+          {/* <img src="./media-placeholder.png" alt="Girl in a jacket" width="500" height="600"></img> */}
           <div className={styles.hr12Mins} style={hr12MinsStyle}>
             {hr12Mins}
           </div>
@@ -65,10 +66,11 @@ const BlogPostCard = ({
                 <div className={styles.iconWrap}>
                   <img
                     className={styles.arrowUpRightIcon}
-                    loading="lazy"
+                    // loading="lazy"
                     alt=""
-                    src="/arrowupright.svg"
+                    src="images\Iconwrap.png"
                   />
+                  <i className="fa fa-rocket" aria-hidden="true"></i>
                 </div>
               </div>
               <div className={styles.supportingText}>{supportingText}</div>

@@ -5,7 +5,7 @@ const MagicLeapLogoBlack = () => {
     <img
       className={styles.magicLeapLogoBlack}
       alt=""
-      src="/magic-leap-logo--black.svg"
+      src="images/Magic Leap (logo — Black).png"
     />
   );
 };
