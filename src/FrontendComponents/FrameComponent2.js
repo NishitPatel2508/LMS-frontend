@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Button } from "@mui/material";
 import BlogPostCard from "./BlogPostCard";
 import TeamMemberWrap from "./TeamMemberWrap";
-import styles from './FrameComponent2.module.css';
+import styles from "./FrameComponent2.module.css";
 // import "./FrameComponent2.css";
 
 const FrameComponent2 = () => {
@@ -50,124 +50,38 @@ const FrameComponent2 = () => {
               <div className={styles.popularCourseCards}>
                 <BlogPostCard
                   hr12Mins="08 hr 12 mins"
-                  heading="Figma UI UX Design.."
-                  supportingText="Use Figma to get a job in UI Design, User Interface, User Experience design."
+                  heading="Bootcamp of python"
+                  supportingText="Beginer level of course for every programmer who wants to learn python."
                   prop="4.3"
                   prop1="(16,325)"
-                  avatar="/avatar@2x.png"
-                  text="Jane Cooper"
-                  prop2="$17.84"
+                  avatar="/images/n1.jpg"
+                  text="Nishit Thakkar"
+                  prop2="Rs. 2500"
+                  propBackgroundImage="url('/images/pythonimg.png')"
                 />
-                <div className={styles.blogPostCard}>
-                  <div className={styles.image}>
-                    <div className={styles.parent}>
-                      <img
-                        className={styles.icon}
-                        alt=""
-                        src="/media-placeholder.svg"
-                      />
-                      <div className={styles.hr3Mins}>06 hr 3 mins</div>
-                    </div>
-                  </div>
-                  <div className={styles.content}>
-                    <div className={styles.headingAndSubheadingParent}>
-                      <div className={styles.headingAndSubheading}>
-                        <div className={styles.subheading1}>Design</div>
-                        <div className={styles.headingAndText}>
-                          <div className={styles.headingAndIcon}>
-                            <div className={styles.heading1}>
-                              Learn With Shoaib
-                            </div>
-                            <div className={styles.iconWrap}>
-                              <img
-                                className={styles.arrowUpRightIcon}
-                                alt=""
-                                src="/arrowupright.svg"
-                              />
-                            </div>
-                          </div>
-                          <div className={styles.supportingText1}>
-                            Design Web Sites and Mobile Apps that Your Users
-                            Love and Return to Again.
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.frameParent}>
-                        <div className={styles.group}>
-                          <div className={styles.div}>3.9</div>
-                          <div className={styles.rating}>
-                            <img
-                              className={styles.ratingChild}
-                              alt=""
-                              src="/star-1.svg"
-                            />
-                            <img
-                              className={styles.ratingItem}
-                              alt=""
-                              src="/star-1.svg"
-                            />
-                            <img
-                              className={styles.ratingInner}
-                              alt=""
-                              src="/star-1.svg"
-                            />
-                            <img
-                              className={styles.starIcon}
-                              alt=""
-                              src="/star-1.svg"
-                            />
-                            <img
-                              className={styles.ratingChild1}
-                              alt=""
-                              src="/star-1.svg"
-                            />
-                          </div>
-                        </div>
-                        <div className={styles.div1}>(832)</div>
-                      </div>
-                    </div>
-                    <div className={styles.frameGroup}>
-                      <div className={styles.avatarParent}>
-                        <img
-                          className={styles.avatarIcon}
-                          alt=""
-                          src="/avatar-1@2x.png"
-                        />
-                        <div className={styles.textParent}>
-                          <div className={styles.text}>Jenny Wilson</div>
-                          <div className={styles.supportingText2}>
-                            2001 Enrolled
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.wrapper}>
-                        <b className={styles.b}>$8.99</b>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
                 <BlogPostCard
                   hr12Mins="01 hr 2 mins"
-                  heading="Building User Interface.."
-                  supportingText="Learn how to apply User Experience (UX) principles to your website designs."
+                  heading="Bootcamp of MERN Stack "
+                  supportingText="Beginer level of course for every programmer who wants to learn MERN."
                   prop="4.2"
                   prop1="(125)"
-                  avatar="/avatar-2@2x.png"
+                  avatar="/images/i3.png"
                   text="Esther Howard"
-                  prop2="$11.70"
+                  prop2="Rs. 1170"
                   propPadding="var(--padding-2xs) var(--padding-3xs) var(--padding-181xl)"
-                  propBackgroundImage="url('/image2@3x.png')"
                   propMinWidth="81px"
                   propMinWidth1="34px"
                   propMinWidth2="100px"
+                  propBackgroundImage="url('/images/mern.png')"
                 />
               </div>
-              <div className={styles.cardGridInner}>
-                <img
+              {/* <div className={styles.cardGridInner}>
+                {/* <img
                   className={styles.frameChild}
                   alt=""
-                  src="/group-521-1.svg"
-                />
+                  src="/images/i3.png"
+                /> 
               </div>
               <div className={styles.buttonWrapper}>
                 <Button
@@ -186,7 +100,7 @@ const FrameComponent2 = () => {
                 >
                   Explore All Programs
                 </Button>
-              </div>
+              </div> */}
             </div>
             <div className={styles.headingAndSupportingTextParent}>
               <div className={styles.headingAndSupportingText}>
@@ -201,24 +115,25 @@ const FrameComponent2 = () => {
               </div>
               <div className={styles.content1}>
                 <TeamMemberWrap
-                  avatar="/avatar-3@2x.png"
+                  avatar="/images/i3.png"
                   name1="Theresa Webb"
                   role="Application Support Analyst Lead"
                   supportingText="Former co-founder of Opendoor. Early staff at Spotify and Clearbit."
                 />
                 <TeamMemberWrap
-                  avatar="/avatar-4@2x.png"
+                  avatar="/images/i2.png"
                   name1="Courtney Henry"
                   role="Director, Undergraduate Analytics and Planning"
                   supportingText="Lead engineering teams at Figma, Pitch, and Protocol Labs."
                   teamMemberOpacity="unset"
                 />
+
                 <div className={styles.teamMemberWrapWrapper}>
                   <div className={styles.teamMemberWrap} data-animate-on-scroll>
                     <img
                       className={styles.avatarIcon1}
                       alt=""
-                      src="/avatar-5@2x.png"
+                      src="/images/i1.png"
                     />
                     <div className={styles.textAndSocialLinks}>
                       <div className={styles.nameAndSupportingText}>
@@ -236,19 +151,19 @@ const FrameComponent2 = () => {
                         <img
                           className={styles.socialIcon}
                           alt=""
-                          src="/social-icon.svg"
+                          src="/images/m.png"
                         />
                         <img
                           className={styles.socialIcon1}
                           alt=""
-                          src="/social-icon-1.svg"
+                          src="/images/m.png"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
                 <TeamMemberWrap
-                  avatar="/avatar-6@2x.png"
+                  avatar="/images/i4.png"
                   name1="Marvin McKinney"
                   role={`Co-op & Internships Program & Operations Manager`}
                   supportingText="Former frontend dev for Linear, Coinbase, and Postscript."
@@ -264,4 +179,3 @@ const FrameComponent2 = () => {
 };
 
 export default FrameComponent2;
-

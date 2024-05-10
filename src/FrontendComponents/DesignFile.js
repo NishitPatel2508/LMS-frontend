@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-
+import Header from "./Header";
 import GroupComponent from "./GroupComponent";
 import CodecovLogoBlack from "./CodecovLogoBlack";
 import UserTestingLogoBlack from "./UserTestingLogoBlack";
@@ -20,19 +20,19 @@ const DesignFile = () => {
   return (
     <div className={styles.designFile}>
       <section className={styles.navigation}>
-        <img className={styles.blurIcon} alt=""  />
+        <img className={styles.blurIcon} alt="" />
+
         <img
-          className={styles.navigationChild}
+          className={styles.navigationItem}
           alt=""
-          // src="/images/Group515.png"
+          src="/images/Group458.png"
         />
-        <img className={styles.navigationItem} alt=""   src="/images/Group458.png"  />
       </section>
       <div className={styles.designFileChild} />
       <section className={styles.header}>
         <div className={styles.headerChild} />
         <div className={styles.maskGroup}>
-          <GroupComponent />
+          <Header />
           <div className={styles.maskGroupChild} />
           <div className={styles.div}>
             <img
@@ -41,8 +41,8 @@ const DesignFile = () => {
               alt=""
               src="/images/Progress-circle.png"
             />
-            
-            <b className={styles.k}>5K+</b>
+
+            <b className={styles.k}>50+</b>
             <div className={styles.onlineCourses}>Online Courses</div>
           </div>
           <div className={styles.div1}>
@@ -51,16 +51,16 @@ const DesignFile = () => {
                 className={styles.icon}
                 loading="lazy"
                 alt=""
-                src="/images/icon-2.png" 
+                src="/images/icon-2.png"
               />
             </div>
-            <b className={styles.k1}>2K+</b>
-            <div className={styles.videoCourses}>Video Courses</div>
+            <b className={styles.k1}>2000+</b>
+            <div className={styles.videoCourses}>Videoes</div>
           </div>
           <div className={styles.div2}>
             <div className={styles.wrapperIcon1}>
-              <img className={styles.icon1} alt=""    src="/images/icon.png"/>
-            </div> 
+              <img className={styles.icon1} alt="" src="/images/icon.png" />
+            </div>
             <div className={styles.tutors}>Tutors</div>
             <b className={styles.tutorsCount}>250+</b>
           </div>
@@ -87,6 +87,7 @@ const DesignFile = () => {
               </div>
               <div className={styles.heroButtons}>
                 <Button
+                  href="/allCourses"
                   className={styles.button}
                   disableElevation={true}
                   variant="contained"
@@ -100,21 +101,6 @@ const DesignFile = () => {
                   }}
                 >
                   Get Started
-                </Button>
-                <Button
-                  className={styles.button1}
-                  disableElevation={true}
-                  variant="contained"
-                  sx={{
-                    textTransform: "none",
-                    color: "#6941c6",
-                    fontSize: "18",
-                    background: "#f4ebff",
-                    borderRadius: "8px",
-                    "&:hover": { background: "#f4ebff" },
-                  }}
-                >
-                  Get free trial
                 </Button>
               </div>
             </div>
@@ -136,15 +122,6 @@ const DesignFile = () => {
                   src="/images/Briefcase.png"
                 />
                 <div className={styles.careerOriented}>Career-Oriented</div>
-              </div>
-              <div className={styles.ideaParent}>
-                <img
-                  className={styles.ideaIcon}
-                  loading="lazy"
-                  alt=""
-                  src="/images/idea.svg"
-                />
-                <div className={styles.creativeThinking}>Creative Thinking</div>
               </div>
             </div>
           </div>
@@ -175,6 +152,6 @@ const DesignFile = () => {
         <Section />
       </footer>
     </div>
-)
-}
+  );
+};
 export default DesignFile;

@@ -12,7 +12,7 @@ const FrameComponent = () => {
                 className={styles.imageIcon}
                 loading="lazy"
                 alt=""
-                src="/image3@2x.png"
+                src="/images/b1.png"
               />
               <div className={styles.content1}>
                 <div className={styles.headingAndText}>
@@ -42,7 +42,7 @@ const FrameComponent = () => {
               </div>
             </div>
             <div className={styles.blogPostCard1}>
-              <img className={styles.imageIcon1} alt="" src="/image-1@2x.png" />
+              <img className={styles.imageIcon1} alt="" src="/images/b2.png" />
               <div className={styles.content2}>
                 <div className={styles.headingAndText2}>
                   <div className={styles.author1}>September 24, 2017</div>
@@ -70,7 +70,7 @@ const FrameComponent = () => {
             </div>
           </div>
           <div className={styles.blogPostCard2}>
-            <img className={styles.imageIcon2} alt="" src="/image-2@2x.png" />
+            <img className={styles.imageIcon2} alt="" src="/images/b3.png" />
             <div className={styles.content3}>
               <div className={styles.headingAndText4}>
                 <div className={styles.author2}>March 13, 2014</div>
