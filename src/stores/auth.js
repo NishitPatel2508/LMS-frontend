@@ -3,8 +3,14 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("accessTokenOfUser"));
+  // const [tokenOfInstructor, setTokenOfInstructor] = useState(
+  //   localStorage.getItem("accessToken")
+  // );
   const storeTokenInLS = (servertoken) => {
-    return localStorage.setItem("accessTokenOfUser", servertoken);
+    return localStorage.setItem(
+      "accessTokenOfUser",
+      JSON.stringify(servertoken)
+    );
   };
   //Logout
   let isLoggedIn = !!token;

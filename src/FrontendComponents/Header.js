@@ -33,51 +33,30 @@ const Header = () => {
   //From Thapa
   const { isLoggedIn } = useAuth();
 
-  const [openNavigation, setOpenNavigation] = useState(false);
   const navigate = useNavigate();
-  const toggleNavigation = () => {
-    if (openNavigation) {
-      setOpenNavigation(false);
-      enablePageScroll();
-    } else {
-      setOpenNavigation(true);
-      disablePageScroll();
-    }
-  };
+  // const [openNavigation, setOpenNavigation] = useState(false);
+  // const toggleNavigation = () => {
+  //   if (openNavigation) {
+  //     setOpenNavigation(false);
+  //     enablePageScroll();
+  //   } else {
+  //     setOpenNavigation(true);
+  //     disablePageScroll();
+  //   }
+  // };
 
-  const handleClick = () => {
-    if (!openNavigation) return;
+  // const handleClick = () => {
+  //   if (!openNavigation) return;
 
-    enablePageScroll();
-    setOpenNavigation(false);
-  };
+  //   enablePageScroll();
+  //   setOpenNavigation(false);
+  // };
   // const styleofdrodown = {
   //   .dropdown-toggle::after {
   //     display: none !important;
   //   }
   // }
-  const navigation = [
-    {
-      id: "0",
-      title: "Home",
-      url: "/",
-    },
-    {
-      id: "1",
-      title: "About Us",
-      url: "#pricing",
-    },
-    {
-      id: "2",
-      title: "Explore Courses",
-      url: "/allcourses",
-    },
-    {
-      id: "3",
-      title: "My Courses",
-      url: "#roadmap",
-    },
-  ];
+
   const handleSignup = () => {
     navigate("/signup");
   };

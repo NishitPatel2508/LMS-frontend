@@ -22,7 +22,6 @@ const Login = () => {
   const [value, setValue] = useState();
   const navigate = useNavigate();
   const { storeTokenInLS } = useAuth();
-  const isLoggedIn = useAuth();
   //Style
   const paperStyle = {
     padding: 20,
@@ -45,6 +44,12 @@ const Login = () => {
   const fieldStyle = {
     margin: "8px 0px",
     width: "350px",
+  };
+  const handleForgotPassword = () => {
+    navigate("/forgotpassword");
+  };
+  const handleSignUp = () => {
+    navigate("/signup");
   };
   //Regex
   const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i;
@@ -84,9 +89,13 @@ const Login = () => {
           console.log(result.data);
           if (result.data) {
             if (result) {
-              console.log(result.data.data.token);
-              storeTokenInLS(result.data.data.token);
-              localStorage.setItem("accessTokenOfUser", result.data.data.token);
+              console.log(result.data.data.accessToken);
+              storeTokenInLS(result.data.data.accessToken);
+              // localStorage.setItem(
+              //   "accessTokenOfUser",
+              //   JSON.stringify(result.data.data.accessToken)
+              // );
+              // localStorage.setItem("accessTokenOfUser", result.data.data.token);
               // storeTokenInLS
             }
           }
@@ -153,15 +162,14 @@ const Login = () => {
         >
           Sign in
         </Button>
-        <Typography>
-          <Link href="/forgotpassword" underline="none">
-            Forgot password?
-          </Link>
+        <Typography
+          style={{ cursor: "pointer" }}
+          onClick={handleForgotPassword}
+        >
+          Forgot password?
         </Typography>
-        <Typography>
-          <Link href="/" underline="none">
-            Create new account
-          </Link>
+        <Typography style={{ cursor: "pointer" }} onClick={handleSignUp}>
+          Create new account
         </Typography>
       </Grid>
       <ToastContainer />

@@ -41,13 +41,18 @@ const FrameComponent6 = () => {
       title: "About Publisher",
       url: "#about-publisher",
     },
+    {
+      id: "3",
+      title: "Course Reviews",
+      url: "#course-review",
+    },
   ];
 
   return (
     <>
       <div
         style={{
-          padding: "15px 470px",
+          padding: "15px 400px",
         }}
       >
         <Navbar

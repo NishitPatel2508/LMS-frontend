@@ -3,7 +3,10 @@ import FrameComponent3 from "./FrameComponent3";
 import FrameComponent4 from "./FrameComponent4";
 import FrameComponent5 from "./FrameComponent5";
 import FrameComponent6 from "./FrameComponent6";
+import FrameComponent1 from "./FrameComponent1";
+
 import WatchContent from "./WatchContent";
+import { FaStar } from "react-icons/fa";
 // import Razorpay from "razorpay";
 import React, { useEffect } from "react";
 import {
@@ -15,7 +18,9 @@ import {
   Avatar,
   Modal,
   IconButton,
+  TextField,
 } from "@mui/material";
+
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -45,9 +50,11 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { pdfjs } from "react-pdf";
-import { Viewer, Worker } from "@react-pdf-viewer/core";
+import ReviewCourse from "../Review/ReviewCourse";
+import AllReviewsForCourse from "../Review/AllReviewsForCourse";
+import GetInstructorInfo from "../Instructor/GetInstructorInfo";
 import "@react-pdf-viewer/core/lib/styles/index.css";
+
 const Mycoursewatch = () => {
   const BoxStyle = {
     position: "absolute",
@@ -74,6 +81,7 @@ const Mycoursewatch = () => {
   };
   const [singleCourse, setSingleCourse] = useState([]);
   const [courseId, setCourseId] = useState("");
+  const [reviewCourseId, setReviewCourseId] = useState("");
   const [name, setName] = useState("");
   const [subCategory, setSubCategory] = useState("");
   const [programmingLanguage, setProgrammingLanguage] = useState("");
@@ -113,8 +121,11 @@ const Mycoursewatch = () => {
   const handleOpenUpdate = () => setOpenHandle(true);
   const handleCloseUpdate = () => setOpenHandle(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     getSingleCourse();
+    const id = localStorage.getItem("userboughtsinglecourse");
+    setReviewCourseId(id);
   }, []);
 
   const getSingleCourse = async () => {
@@ -123,7 +134,8 @@ const Mycoursewatch = () => {
       if (!accessToken) {
         throw new Error("Access token is missing.");
       }
-      const id = localStorage.getItem("usercourseid");
+      const id = localStorage.getItem("userboughtsinglecourse");
+
       //   setCourseId(courseid);
       //   console.log(courseid);
       let result = await axios
@@ -136,9 +148,12 @@ const Mycoursewatch = () => {
           console.log(result);
           console.log(result.data.data);
           console.log(id);
+          setCourseId(id);
           if (result) {
-            setCourseId(result.data.data._id);
             setSingleCourse(result.data.data);
+            setCourseId(result.data.data._id);
+            setReviewCourseId(result.data.data._id);
+            // localStorage.setItem("reviewCourse", result.data.data._id);
             setCourseImg(result.data.data.courseImg);
             setName(result.data.data.name);
             setCategoryName(result.data.data.category._id);
@@ -638,139 +653,6 @@ const Mycoursewatch = () => {
                   );
                 });
               })}
-
-              {/* <CourseContentBarClosed
-                definitionPlanningForSucc="Intorduction to Python Language"
-                sections30Minutes="1 Sections "
-              />
-              <CourseContentBarClosed
-                definitionPlanningForSucc="Variables and Datatypes in python language"
-                sections30Minutes="1 Sections "
-              />
-              <CourseContentBarClosed
-                definitionPlanningForSucc="Loops in python language"
-                sections30Minutes="1 Sections "
-              /> */}
-              {/* <CourseContentBarClosed
-                definitionPlanningForSucc="Information Architecture: Creating a Solid Foundation"
-                sections30Minutes="6 Sections . 120 minutes"
-              /> */}
-              {/* <div className={styles2.courseContentBarOpen}>
-                <div className={styles2.bg4} />
-                <img className={styles2.bgIcon} alt="" src="/bg.svg" />
-                <div className={styles2.frameContainer}>
-                  <div className={styles2.iconOutlinedMinusWrapper}>
-                    <div className={styles2.iconOutlinedMinus}>
-                      <div className={styles2.bgParent1}>
-                        <div className={styles2.bg5} />
-                        <div className={styles2.color4} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles2.informationArchitectureCrea}>
-                    Information Architecture: Creating a Solid Foundation Part
-                    02
-                  </div>
-                  <div className={styles2.sections89}>
-                    5 Sections . 89 minutes
-                  </div>
-                </div>
-                <div className={styles2.lessonParent}>
-                  <div className={styles2.lesson}>
-                    <div className={styles2.iconFilledVideo}>
-                      <div className={styles2.bgParent2}>
-                        <div className={styles2.bg6} />
-                        <div className={styles2.color5} />
-                      </div>
-                    </div>
-                    <div className={styles2.exerciseTurningInformation}>
-                      Exercise: Turning Information Priority into an IA Model
-                    </div>
-                    <div className={styles2.watchDemo}>Watch Demo</div>
-                    <div className={styles2.minutes}>6 minutes</div>
-                  </div>
-                  <div className={styles2.lesson1}>
-                    <img
-                      className={styles2.iconFilledArticle}
-                      loading="lazy"
-                      alt=""
-                      src="/icon--filled--article.svg"
-                    />
-                    <div className={styles2.iaModelsWhichOnesRightFWrapper}>
-                      <div className={styles2.iaModelsWhich}>
-                        IA Models: Which One's Right for My Site?
-                      </div>
-                    </div>
-                    <div className={styles2.watchDemo1}>Watch Demo</div>
-                    <div className={styles2.minutes1}>8 minutes</div>
-                  </div>
-                  <div className={styles2.lesson2}>
-                    <div className={styles2.iconFilledVideo1}>
-                      <div className={styles2.bgParent3}>
-                        <div className={styles2.bg7} />
-                        <div className={styles2.color6} />
-                      </div>
-                    </div>
-                    <div className={styles2.hierarchicalTreeIaModelWrapper}>
-                      <div className={styles2.hierarchicalTreeIa}>
-                        Hierarchical Tree IA Model
-                      </div>
-                    </div>
-                    <div className={styles2.watchDemo2}>Watch Demo</div>
-                    <div className={styles2.minutes2}>15 minutes</div>
-                  </div>
-                  <div className={styles2.lesson3}>
-                    <div className={styles2.iconFilledVideoParent}>
-                      <div className={styles2.iconFilledVideo2}>
-                        <div className={styles2.bgParent4}>
-                          <div className={styles2.bg8} />
-                          <div className={styles2.color7} />
-                        </div>
-                      </div>
-                      <div className={styles2.combiningIaModels}>
-                        Combining IA Models
-                      </div>
-                    </div>
-                    <div className={styles2.watchDemo3}>Watch Demo</div>
-                    <div className={styles2.minutes3}>20 minutes</div>
-                  </div>
-                  <div className={styles2.lesson4}>
-                    <img
-                      className={styles2.iconFilledArticle1}
-                      alt=""
-                      src="/icon--filled--article.svg"
-                    />
-                    <div className={styles2.toolsForCreatingIaModelsWrapper}>
-                      <div className={styles2.toolsForCreating}>
-                        Tools for Creating IA Models
-                      </div>
-                    </div>
-                    <div className={styles2.watchDemo4}>Watch Demo</div>
-                    <div className={styles2.minutes4}>40 minutes</div>
-                  </div>
-                </div>
-              </div> */}
-              {/* <CourseContentBarClosed
-                definitionPlanningForSucc="Information Architecture: Creating a Solid Foundation Part 03"
-                sections30Minutes="8 Sections . 180 minutes"
-              />
-              <CourseContentBarClosed
-                definitionPlanningForSucc={`Design: Information, Interaction & Interfaces`}
-                sections30Minutes="4 Sections . 60 minutes"
-              />
-              <CourseContentBarClosed
-                definitionPlanningForSucc={`Design: Information, Interaction & Interfaces Part 02`}
-                sections30Minutes="2 Sections . 58 minutes"
-              />
-              <CourseContentBarClosed
-                definitionPlanningForSucc={`Design: Information, Interaction & Interfaces Part 03`}
-                sections30Minutes="3 Sections . 32 minutes"
-              />
-              <CourseContentBarClosed1
-                courseOverview={`Launch & Beyond`}
-                sections15Minutes="4 Sections . 84 minutes"
-                propMarginTop="-1px"
-              /> */}
             </div>
           </div>
         </div>
@@ -788,97 +670,42 @@ const Mycoursewatch = () => {
         </div>
       </section>
       {/* <FrameComponent2 />  All Info about Instructor*/}
-      <section className={styles4.homeInner}>
-        <div className={styles4.joeHasBeenPreachingAndPraParent}>
-          <div className={styles4.joeHasBeen}>
-            Nishit has been preaching and practicing the gospel of User
-            Experience (UX) to Fortune 100, 500 and Government organizations for
-            nearly 10 years. That work includes commercial industry leaders like
-            Google Ventures, Kroll/Duff + Phelps, Broadridge, Conde Nast, Johns
-            Hopkins, Mettler-Toledo, PHH Arval, SC Johnson and Wolters Kluwer,
-            as well as government agencies like the National Science Foundation,
-            National Institutes of Health and the Dept. of Homeland Security.
-          </div>
-          <div className={styles4.frameParent}>
-            <div className={styles4.frameGroup}>
-              <div className={styles4.frameContainer}>
-                <div className={styles4.anudeepAyyagariParent}>
-                  <h1 className={styles4.anudeepAyyagari}>{instructorName}</h1>
-                  <div className={styles4.iconFilledCheckWrapper}>
-                    <div className={styles4.iconFilledCheck}>
-                      <div className={styles4.bound} />
-                      <div className={styles4.color} />
-                    </div>
-                  </div>
-                </div>
-                <div className={styles4.yearUx}>{instructorName}</div>
-              </div>
-              <div className={styles4.line} />
-              <div className={styles4.joeNatoliHas}>{instructorName}</div>
+
+      <GetInstructorInfo
+        instructorName={instructorName}
+        instructorImg={instructorImg}
+      />
+
+      {/* Add Review */}
+      <section className={styles3.heading01Wrapper} id="add-review">
+        <div className={styles3.heading01}>
+          <div className={styles3.subHeading}>
+            <div className={styles3.lineWrapper}>
+              <div className={styles3.line} />
             </div>
-          </div>
-          <div className={styles4.rectangleParent}>
-            <img
-              className={styles4.frameChild}
-              loading="lazy"
-              alt={instructorName}
-              src={instructorImg}
-            />
-            {/* <div className={styles4.iconAndTextParent}>
-              <div className={styles4.iconAndText}>
-                <img
-                  className={styles4.iconFilledStar}
-                  alt=""
-                  src="/icon--filled--star-1.svg"
-                />
-                <div className={styles4.instructorRating}>
-                  <b>4.5</b>
-                  <span> Instructor Rating</span>
-                </div>
-              </div>
-              <div className={styles4.iconAndText1}>
-                <img
-                  className={styles4.iconFilledRatinngs}
-                  loading="lazy"
-                  alt=""
-                  src="/icon--filled-ratinngs.svg"
-                />
-                <div className={styles4.reviews}>
-                  <b>28,707</b>
-                  <span> Reviews</span>
-                </div>
-              </div>
-              <div className={styles4.iconAndText2}>
-                <img
-                  className={styles4.iconFilledStudents}
-                  loading="lazy"
-                  alt=""
-                  src="/icon--filled-students.svg"
-                />
-                <div className={styles4.students}>
-                  <b>155,242</b>
-                  <span> Students</span>
-                </div>
-              </div>
-              <div className={styles4.iconAndText3}>
-                <div className={styles4.iconFilledVideo}>
-                  <div className={styles4.bgGroup}>
-                    <div className={styles4.bg1} />
-                    <div className={styles4.color1} />
-                  </div>
-                </div>
-                <div className={styles4.courses}>
-                  <b>8</b>
-                  <span> Courses</span>
-                </div>
-              </div>
-            </div> */}
+            <b className={styles3.aboutPublisher}>Reviews</b>
           </div>
         </div>
       </section>
+
+      <ReviewCourse courseId={courseId} />
+
+      {/* Review By Others */}
+      <section className={styles3.heading01Wrapper} id="review-others">
+        <div className={styles3.heading01}>
+          <div className={styles3.subHeading}>
+            <div className={styles3.lineWrapper}>
+              <div className={styles3.line} />
+            </div>
+            <b className={styles3.aboutPublisher}>Reviews By Others</b>
+          </div>
+        </div>
+      </section>
+      <AllReviewsForCourse reviewCourseId={reviewCourseId} />
       {/* <FrameComponent1 /> */}
       {/* <FrameComponent /> */}
       {/* <Footer /> */}
+
       <footer className={styles.footer}>
         <Section1 />
         <Section />

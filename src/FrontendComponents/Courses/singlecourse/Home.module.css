@@ -27,6 +27,22 @@
     height: 100%;
 }
 
+.email {
+    border: 0;
+    background-color: transparent;
+    align-self: stretch;
+    height: 50px;
+    width: 850px;
+    font-family: var(--text-md-normal);
+    font-size: var(--text-md-normal-size);
+    color: var(--color-gray-300);
+    z-index: 1;
+    /* padding: 2px; */
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
 .color {
     background-color: var(--grey-shade-01);
 }
@@ -212,6 +228,14 @@
     background-color: #fcfafc;
     line-height: normal;
     letter-spacing: normal;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1225px) {
