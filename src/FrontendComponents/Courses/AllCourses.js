@@ -143,7 +143,7 @@ const AllCourses = () => {
                       >
                         <Avatar
                           alt="Remy Sharp"
-                          src={element.instructor.profileImg}
+                          src={`http://localhost:5000/uploads/${element.instructor.profileImg}`}
                         />
                         <Typography
                           gutterBottom

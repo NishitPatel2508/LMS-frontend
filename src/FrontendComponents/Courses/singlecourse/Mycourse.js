@@ -22,6 +22,14 @@ const Mycourse = () => {
     // getSingleCourse();
     getAllMyCourse();
   }, []);
+  const handleSingleCourse = (id) => {
+    localStorage.setItem("userboughtsinglecourse", id);
+    const i = localStorage.getItem("userboughtsinglecourse");
+
+    if (i) {
+      navigate("/mycourses");
+    }
+  };
 
   const getAllMyCourse = async () => {
     try {
@@ -123,7 +131,7 @@ const Mycourse = () => {
                       >
                         <Avatar
                           alt="Remy Sharp"
-                          src={`${element.course.instructor.profileImg}`}
+                          src={`http://localhost:5000/uploads/${element.course.instructor.profileImg}`}
                         />
                         <Typography
                           gutterBottom
@@ -140,7 +148,7 @@ const Mycourse = () => {
                         fullWidth
                         color="primary"
                         onClick={() => {
-                          navigate("/mycourses");
+                          handleSingleCourse(element.course._id);
                         }}
                         style={{
                           textTransform: "none",

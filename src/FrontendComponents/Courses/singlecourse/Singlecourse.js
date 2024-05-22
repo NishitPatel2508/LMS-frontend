@@ -41,9 +41,12 @@ import styles6 from "./CourseContentBarClosed.module.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AllReviewsForCourse from "../Review/AllReviewsForCourse";
+import GetInstructorInfo from "../Instructor/GetInstructorInfo";
 const Singlecourse = () => {
   const [singleCourse, setSingleCourse] = useState([]);
   const [courseId, setCourseId] = useState("");
+  const [reviewCourseId, setReviewCourseId] = useState("");
   const [name, setName] = useState("");
   const [subCategory, setSubCategory] = useState("");
   const [programmingLanguage, setProgrammingLanguage] = useState("");
@@ -60,6 +63,8 @@ const Singlecourse = () => {
   const [categoryName, setCategoryName] = useState("");
   const [instructorName, setInstructorName] = useState("");
   const [instructorImg, setInstructorImg] = useState("");
+  const [chapter, setChapter] = useState([]);
+  const [totalChapter, setTotalChapter] = useState(0);
   const [pid, setPid] = useState("");
 
   const handleOpen = () => setOpen(true);
@@ -72,6 +77,8 @@ const Singlecourse = () => {
   const finalprice = price * 100;
   useEffect(() => {
     getSingleCourse();
+    const id = localStorage.getItem("usercourseid");
+    setReviewCourseId(id);
   }, []);
 
   const getSingleCourse = async () => {
@@ -81,6 +88,7 @@ const Singlecourse = () => {
         throw new Error("Access token is missing.");
       }
       const id = localStorage.getItem("usercourseid");
+      setCourseId(id);
       //   setCourseId(courseid);
       //   console.log(courseid);
       let result = await axios
@@ -112,6 +120,8 @@ const Singlecourse = () => {
             setDiscount(result.data.data.discount);
             setDeadline(result.data.data.deadline);
             setAllContent(result.data.data.content);
+            // setChapter(result.data.data.content.chapterDetailes);
+            // setTotalChapter(result.data.data.content.chapterDetailes.length);
             console.log(result.data.data.content);
             console.log(allContent);
           }
@@ -128,7 +138,7 @@ const Singlecourse = () => {
   const handleMycourse = () => {
     navigate("/mycourse");
   };
-  const mycourse = async (res, data) => {
+  const mycourse = async (res) => {
     try {
       const accessToken = JSON.parse(
         localStorage.getItem("accessTokenOfUser") || ""
@@ -144,7 +154,7 @@ const Singlecourse = () => {
         paymentId: res.razorpay_payment_id,
         course: userCourse,
       };
-      let result = await axios
+      const result = await axios
         .post(`http://localhost:5000/mycourses`, fields, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -162,7 +172,7 @@ const Singlecourse = () => {
           }, 3000);
         })
         .catch((err) => {
-          console.log(err.response);
+          console.log(err);
           // toast.error(err.response.data.message);
           // console.log(response.data.data.message);
           console.log(accessToken);
@@ -182,15 +192,19 @@ const Singlecourse = () => {
       name: "Brainwave",
       image: "/images/brainwave-symbol.svg",
       handler: async function (response) {
-        let result = await axios.post(
-          `http://localhost:5000/verify`,
-          response,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        console.log(response);
+        // let result = await axios.post(
+        //   `http://localhost:5000/verify`,
+        //   response,
+        //   {
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     },
+        //   }
+        // );
+        if (response) {
+          await mycourse(response);
+        }
       },
       prefill: {
         name: "Gaurav Kumar",
@@ -224,9 +238,11 @@ const Singlecourse = () => {
     const receiptId = "1234567890";
 
     try {
+      // const accessToken = localStorage.getItem("accessToken") || "");
       const accessToken = JSON.parse(
         localStorage.getItem("accessTokenOfUser") || ""
       );
+      console.log(accessToken);
       if (!accessToken) {
         throw new Error("Access token is missing.");
       }
@@ -365,10 +381,11 @@ const Singlecourse = () => {
         </div>
       </section>
       <CourseMetrics />
+
       <FrameComponent6 />
 
       {/* <FrameComponent5 />  About Course*/}
-      <section className={styles1.homeInner}>
+      <section className={styles1.homeInner} id="about-course">
         <div className={styles1.frameParent}>
           <div className={styles1.heading2Parent}>
             <div className={styles1.heading2}>
@@ -567,7 +584,7 @@ const Singlecourse = () => {
       </section>
 
       {/* <FrameComponent4 />  Course Content*/}
-      <section className={styles2.homeInner}>
+      <section className={styles2.homeInner} id="course-content">
         <div className={styles2.heading01Parent}>
           <div className={styles2.heading01}>
             <div className={styles2.subHeading}>
@@ -583,17 +600,17 @@ const Singlecourse = () => {
           <div className={styles2.frameParent}>
             <div className={styles2.frameGroup}>
               <div className={styles2.lessonsParent}>
-                <div className={styles2.lessons}>3 Lessons</div>
+                {/* <div className={styles2.lessons}>3{totalChapter}</div>
                 <div className={styles2.iconOutlinedBullet}>
                   <div className={styles2.bgParent}>
                     <div className={styles2.bg} />
                     <div className={styles2.color} />
                   </div>
                 </div>
-                <div className={styles2.videos}>3 Videos</div>
-                <div className={styles2.h32mComplition}>
+                <div className={styles2.videos}>3 Videos</div> */}
+                {/* <div className={styles2.h32mComplition}>
                   125 Mins Complition Time
-                </div>
+                </div> */}
                 {/* <div className={styles2.iconOutlinedBullet1}>
                   <div className={styles2.bgGroup}>
                     <div className={styles2.bg1} />
@@ -832,7 +849,7 @@ const Singlecourse = () => {
       </section>
 
       {/* <FrameComponent3 />  About Instructor*/}
-      <section className={styles3.heading01Wrapper}>
+      <section className={styles3.heading01Wrapper} id="about-publisher">
         <div className={styles3.heading01}>
           <div className={styles3.subHeading}>
             <div className={styles3.lineWrapper}>
@@ -843,97 +860,24 @@ const Singlecourse = () => {
         </div>
       </section>
       {/* <FrameComponent2 />  All Info about Instructor*/}
-      <section className={styles4.homeInner}>
-        <div className={styles4.joeHasBeenPreachingAndPraParent}>
-          <div className={styles4.joeHasBeen}>
-            Nishit has been preaching and practicing the gospel of User
-            Experience (UX) to Fortune 100, 500 and Government organizations for
-            nearly 10 years. That work includes commercial industry leaders like
-            Google Ventures, Kroll/Duff + Phelps, Broadridge, Conde Nast, Johns
-            Hopkins, Mettler-Toledo, PHH Arval, SC Johnson and Wolters Kluwer,
-            as well as government agencies like the National Science Foundation,
-            National Institutes of Health and the Dept. of Homeland Security.
-          </div>
-          <div className={styles4.frameParent}>
-            <div className={styles4.frameGroup}>
-              <div className={styles4.frameContainer}>
-                <div className={styles4.anudeepAyyagariParent}>
-                  <h1 className={styles4.anudeepAyyagari}>{instructorName}</h1>
-                  <div className={styles4.iconFilledCheckWrapper}>
-                    <div className={styles4.iconFilledCheck}>
-                      <div className={styles4.bound} />
-                      <div className={styles4.color} />
-                    </div>
-                  </div>
-                </div>
-                <div className={styles4.yearUx}>{instructorName}</div>
-              </div>
-              <div className={styles4.line} />
-              <div className={styles4.joeNatoliHas}>{instructorName}</div>
+
+      <GetInstructorInfo
+        instructorName={instructorName}
+        instructorImg={instructorImg}
+      />
+      <section className={styles3.heading01Wrapper} id="course-review">
+        <div className={styles3.heading01}>
+          <div className={styles3.subHeading}>
+            <div className={styles3.lineWrapper}>
+              <div className={styles3.line} />
             </div>
-          </div>
-          <div className={styles4.rectangleParent}>
-            <img
-              className={styles4.frameChild}
-              loading="lazy"
-              alt={instructorName}
-              src={instructorImg}
-            />
-            {/* <div className={styles4.iconAndTextParent}>
-              <div className={styles4.iconAndText}>
-                <img
-                  className={styles4.iconFilledStar}
-                  alt=""
-                  src="/icon--filled--star-1.svg"
-                />
-                <div className={styles4.instructorRating}>
-                  <b>4.5</b>
-                  <span> Instructor Rating</span>
-                </div>
-              </div>
-              <div className={styles4.iconAndText1}>
-                <img
-                  className={styles4.iconFilledRatinngs}
-                  loading="lazy"
-                  alt=""
-                  src="/icon--filled-ratinngs.svg"
-                />
-                <div className={styles4.reviews}>
-                  <b>28,707</b>
-                  <span> Reviews</span>
-                </div>
-              </div>
-              <div className={styles4.iconAndText2}>
-                <img
-                  className={styles4.iconFilledStudents}
-                  loading="lazy"
-                  alt=""
-                  src="/icon--filled-students.svg"
-                />
-                <div className={styles4.students}>
-                  <b>155,242</b>
-                  <span> Students</span>
-                </div>
-              </div>
-              <div className={styles4.iconAndText3}>
-                <div className={styles4.iconFilledVideo}>
-                  <div className={styles4.bgGroup}>
-                    <div className={styles4.bg1} />
-                    <div className={styles4.color1} />
-                  </div>
-                </div>
-                <div className={styles4.courses}>
-                  <b>8</b>
-                  <span> Courses</span>
-                </div>
-              </div>
-            </div> */}
+            <b className={styles3.aboutPublisher}>Review About Course</b>
           </div>
         </div>
       </section>
-      {/* <FrameComponent1 /> */}
-      {/* <FrameComponent /> */}
-      {/* <Footer /> */}
+
+      <AllReviewsForCourse reviewCourseId={reviewCourseId} />
+
       <footer className={styles.footer}>
         <Section1 />
         <Section />
