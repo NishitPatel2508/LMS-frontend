@@ -3,9 +3,9 @@ import { FaStar } from "react-icons/fa";
 import { Button, TextField } from "@mui/material";
 import styles4 from "../singlecourse/FrameComponent2.module.css";
 import axios from "axios";
+import { baseURL } from "../../../basic";
 
 const ReviewCourse = ({ courseId }) => {
-  const URL = `http://localhost:5000/review/create`;
   const [rating, setRating] = useState(null);
   const [ratingError, setRatingError] = useState(null);
   const [hover, setHover] = useState(null);
@@ -15,7 +15,6 @@ const ReviewCourse = ({ courseId }) => {
     console.log(courseId);
     console.log(rating);
     setReview(e.target.value);
-    console.log(e.target.value);
   };
   const handleSubmitReview = async () => {
     // e.preventDefault();
@@ -40,7 +39,7 @@ const ReviewCourse = ({ courseId }) => {
     };
     if (review) {
       const result = await axios
-        .post(`http://localhost:5000/review/create`, fields, {
+        .post(`${baseURL}/review/create`, fields, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             //   "Content-Type": "multipart/form-data",
@@ -55,6 +54,7 @@ const ReviewCourse = ({ courseId }) => {
           setRating(null);
           setHover(null);
           setReview(null);
+          // setReview("");
         })
         .catch((err) => {
           console.log(err.response);

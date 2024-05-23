@@ -3,7 +3,7 @@ import Header from "../Header";
 import Section from "../Section";
 import Section1 from "../Section1";
 import styles from "../DesignFile.module.css";
-import { Box, Typography, useTheme, Button, Link, Avatar } from "@mui/material";
+import { Box, Typography, Button, Avatar } from "@mui/material";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -12,6 +12,8 @@ import CardMedia from "@mui/material/CardMedia";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../basic";
+
 // import { ToastContainer, toast } from "react-toastify";
 const AllCourses = () => {
   useEffect(() => {
@@ -31,38 +33,14 @@ const AllCourses = () => {
       // if (!accessToken) {
       //   throw new Error("Access token is missing.");
       // }
-      let result = await axios
-        .get("http://localhost:5000/getAllCourseforuser", {})
-        // headers: {
-        //   Authorization: `Bearer ${accessToken}`,
-        //   // "Content-Type": "multipart/form-data",
-        // },
-        .then((result) => {
-          console.log(result);
-          console.log(result.data.data[0]);
-          console.log(allCourse, "all");
-          setAllCourse(result.data.data);
+      const result = await axios
+        .get(`${baseURL}/getAllCourseforuser`, {
+          headers: {
+            // Authorization: `Bearer ${accessToken}`,
+            "ngrok-skip-browser-warning": "true",
+            "Content-Type": "application/json",
+          },
         })
-        .catch((err) => {
-          console.log(err.response);
-          // console.log(accessToken);
-        });
-    } catch (error) {
-      console.error("Error during signup:", error);
-    }
-  };
-  const getAllContent = async () => {
-    try {
-      // const accessToken = JSON.parse(localStorage.getItem("accessToken") || "");
-      // if (!accessToken) {
-      //   throw new Error("Access token is missing.");
-      // }
-      let result = await axios
-        .get("http://localhost:5000/getAllContent", {})
-        // headers: {
-        //   Authorization: `Bearer ${accessToken}`,
-        //   // "Content-Type": "multipart/form-data",
-        // },
         .then((result) => {
           console.log(result);
           console.log(result.data.data[0]);
@@ -143,7 +121,7 @@ const AllCourses = () => {
                       >
                         <Avatar
                           alt="Remy Sharp"
-                          src={`http://localhost:5000/uploads/${element.instructor.profileImg}`}
+                          src={`${baseURL}/uploads/${element.instructor.profileImg}`}
                         />
                         <Typography
                           gutterBottom
@@ -173,15 +151,6 @@ const AllCourses = () => {
                       >
                         View All Details
                       </Button>
-                      {/* <Button
-                        variant="contained"
-                        color="error"
-                        // onClick={() => {
-                        //   handleDelete(element._id);
-                        // }}
-                      >
-                        Delete
-                      </Button> */}
                     </CardActions>
                   </Card>
                 </Box>

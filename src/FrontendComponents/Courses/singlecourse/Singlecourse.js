@@ -1,7 +1,7 @@
-import FrameComponent2 from "./FrameComponent2";
-import FrameComponent3 from "./FrameComponent3";
-import FrameComponent4 from "./FrameComponent4";
-import FrameComponent5 from "./FrameComponent5";
+// import FrameComponent2 from "./FrameComponent2";
+// import FrameComponent3 from "./FrameComponent3";
+// import FrameComponent4 from "./FrameComponent4";
+// import FrameComponent5 from "./FrameComponent5";
 import FrameComponent6 from "./FrameComponent6";
 // import Razorpay from "razorpay";
 import React, { useEffect } from "react";
@@ -29,13 +29,13 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import CourseContentBarClosed1 from "./CourseContentBarClosed1";
-import CourseContentBarClosed from "./CourseContentBarClosed";
+// import CourseContentBarClosed1 from "./CourseContentBarClosed1";
+// import CourseContentBarClosed from "./CourseContentBarClosed";
 import styles from "./Home.module.css";
 import styles1 from "./FrameComponent5.module.css";
 import styles2 from "./FrameComponent4.module.css";
 import styles3 from "./FrameComponent3.module.css";
-import styles4 from "./FrameComponent2.module.css";
+// import styles4 from "./FrameComponent2.module.css";
 import styles5 from "./HeaderText.module.css";
 import styles6 from "./CourseContentBarClosed.module.css";
 import { useState } from "react";
@@ -43,6 +43,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AllReviewsForCourse from "../Review/AllReviewsForCourse";
 import GetInstructorInfo from "../Instructor/GetInstructorInfo";
+import { baseURL } from "../../../basic";
 const Singlecourse = () => {
   const [singleCourse, setSingleCourse] = useState([]);
   const [courseId, setCourseId] = useState("");
@@ -75,34 +76,44 @@ const Singlecourse = () => {
   const handleCloseUpdate = () => setOpenHandle(false);
   const navigate = useNavigate();
   const finalprice = price * 100;
-  useEffect(() => {
-    getSingleCourse();
-    const id = localStorage.getItem("usercourseid");
-    setReviewCourseId(id);
-  }, []);
 
+  useEffect(() => {
+    const id = localStorage.getItem("usercourseid");
+    // getSingleCourse();
+    setReviewCourseId(id);
+    setCourseId(id);
+    console.log(courseId);
+    console.log(courseId);
+    getSingleCourse();
+  }, [reviewCourseId]);
+  useEffect(() => {}, [courseId]);
   const getSingleCourse = async () => {
     try {
-      const accessToken = JSON.parse(localStorage.getItem("accessToken") || "");
+      const accessToken = JSON.parse(
+        localStorage.getItem("accessTokenOfUser") || ""
+      );
       if (!accessToken) {
         throw new Error("Access token is missing.");
       }
-      const id = localStorage.getItem("usercourseid");
-      setCourseId(id);
+      // const id = JSON.parse(localStorage.getItem("usercourseid") || "");
+      // const id = localStorage.getItem("usercourseid");
+      // setCourseId(id);
       //   setCourseId(courseid);
-      //   console.log(courseid);
+      console.log(courseId);
       let result = await axios
-        .get(`http://localhost:5000/course/user/${id}`, {})
-        // headers: {
-        //   Authorization: `Bearer ${accessToken}`,
-        //   // "Content-Type": "multipart/form-data",
-        // },
+        .get(`${baseURL}/course/user/${reviewCourseId}`, {
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+            "Content-Type": "application/json",
+          },
+        })
         .then((result) => {
           console.log(result);
           console.log(result.data.data);
-          console.log(id);
+          // console.log(id);
           if (result) {
-            setCourseId(result.data.data._id);
+            // setCourseId(result.data.data._id);
+
             setSingleCourse(result.data.data);
             setCourseImg(result.data.data.courseImg);
             setName(result.data.data.name);
@@ -129,7 +140,7 @@ const Singlecourse = () => {
         .catch((err) => {
           console.log(err.response);
           console.log(accessToken);
-          console.log(id);
+          // console.log(id);
         });
     } catch (error) {
       console.error("Error during signup:", error);
@@ -155,7 +166,7 @@ const Singlecourse = () => {
         course: userCourse,
       };
       const result = await axios
-        .post(`http://localhost:5000/mycourses`, fields, {
+        .post(`${baseURL}/mycourses`, fields, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             // "Content-Type": "multipart/form-data",

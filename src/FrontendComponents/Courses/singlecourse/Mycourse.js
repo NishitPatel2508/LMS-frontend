@@ -15,6 +15,7 @@ import styles from "./Home.module.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from "../../../basic";
 const Mycourse = () => {
   const [myCourse, setMycourse] = useState([]);
   const navigate = useNavigate();
@@ -44,9 +45,10 @@ const Mycourse = () => {
       console.log(userCourse);
 
       let result = await axios
-        .get(`http://localhost:5000/getallmycourses`, {
+        .get(`${baseURL}/getallmycourses`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
+            "ngrok-skip-browser-warning": "true",
             // "Content-Type": "multipart/form-data",
           },
         })
@@ -131,7 +133,7 @@ const Mycourse = () => {
                       >
                         <Avatar
                           alt="Remy Sharp"
-                          src={`http://localhost:5000/uploads/${element.course.instructor.profileImg}`}
+                          src={`${baseURL}/uploads/${element.course.instructor.profileImg}`}
                         />
                         <Typography
                           gutterBottom

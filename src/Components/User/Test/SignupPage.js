@@ -1,19 +1,13 @@
 import styles from "./SignupPage.module.css";
-import GroupComponent from "./GroupComponent";
+// import GroupComponent from "./GroupComponent";
 import React, { useState } from "react";
-// import './register.css'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css"
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Avatar, Grid, Box, Button, Typography, Link } from "@mui/material";
+import { Button, Typography, Link } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import { baseURL } from "../../../basic";
 
 const SignupPage = () => {
   const [name, setName] = useState("");
@@ -93,7 +87,7 @@ const SignupPage = () => {
       const header = { "Access-control-Allow-Origin": "*" };
 
       let result = await axios
-        .post("http://localhost:5000/users/createuser", {
+        .post(`${baseURL}/users/createuser`, {
           name: name,
           email: email,
           password: password,

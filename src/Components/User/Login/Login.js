@@ -3,17 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import {
-  Avatar,
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  Link,
-} from "@mui/material";
+import { Avatar, Grid, TextField, Button, Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useAuth } from "../../../stores/auth";
+import { baseURL } from "../../../basic";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -80,7 +74,7 @@ const Login = () => {
     if (email && password) {
       const header = { "Access-control-Allow-Origin": "*" };
       let result = await axios
-        .post("http://localhost:5000/user/login", {
+        .post(`${baseURL}/user/login`, {
           email: email,
           password: password,
         })
