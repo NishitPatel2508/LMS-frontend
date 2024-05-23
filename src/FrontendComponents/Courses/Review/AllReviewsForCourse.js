@@ -4,6 +4,7 @@ import { FaStar } from "react-icons/fa";
 import { TextField } from "@mui/material";
 import axios from "axios";
 import moment from "moment";
+import { baseURL } from "../../../basic";
 
 const AllReviewsForCourse = ({ reviewCourseId }) => {
   useEffect(() => {
@@ -15,8 +16,20 @@ const AllReviewsForCourse = ({ reviewCourseId }) => {
   const getAllReviewForCourse = async () => {
     // const id = courseId;
     // console.log(id);
+    const accessToken = JSON.parse(
+      localStorage.getItem("accessTokenOfUser") || ""
+    );
+    if (!accessToken) {
+      throw new Error("Access token is missing.");
+    }
     let result = await axios
-      .get(`http://localhost:5000/review/getAll/${reviewCourseId}`, {})
+      .get(`${baseURL}/review/getAll/${reviewCourseId}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "ngrok-skip-browser-warning": "true",
+          "Content-Type": "application/json",
+        },
+      })
       .then((result) => {
         console.log(result);
         console.log(result.data);

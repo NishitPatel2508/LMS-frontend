@@ -1,12 +1,12 @@
-import FrameComponent2 from "./FrameComponent2";
-import FrameComponent3 from "./FrameComponent3";
-import FrameComponent4 from "./FrameComponent4";
-import FrameComponent5 from "./FrameComponent5";
+// import FrameComponent2 from "./FrameComponent2";
+// import FrameComponent3 from "./FrameComponent3";
+// import FrameComponent4 from "./FrameComponent4";
+// import FrameComponent5 from "./FrameComponent5";
 import FrameComponent6 from "./FrameComponent6";
-import FrameComponent1 from "./FrameComponent1";
+// import FrameComponent1 from "./FrameComponent1";
 
-import WatchContent from "./WatchContent";
-import { FaStar } from "react-icons/fa";
+// import WatchContent from "./WatchContent";
+// import { FaStar } from "react-icons/fa";
 // import Razorpay from "razorpay";
 import React, { useEffect } from "react";
 import {
@@ -37,13 +37,13 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import CourseContentBarClosed1 from "./CourseContentBarClosed1";
-import CourseContentBarClosed from "./CourseContentBarClosed";
+// import CourseContentBarClosed1 from "./CourseContentBarClosed1";
+// import CourseContentBarClosed from "./CourseContentBarClosed";
 import styles from "./Home.module.css";
 import styles1 from "./FrameComponent5.module.css";
 import styles2 from "./FrameComponent4.module.css";
 import styles3 from "./FrameComponent3.module.css";
-import styles4 from "./FrameComponent2.module.css";
+// import styles4 from "./FrameComponent2.module.css";
 import styles5 from "./HeaderText.module.css";
 import styles6 from "./CourseContentBarClosed.module.css";
 import { useState } from "react";
@@ -54,6 +54,7 @@ import ReviewCourse from "../Review/ReviewCourse";
 import AllReviewsForCourse from "../Review/AllReviewsForCourse";
 import GetInstructorInfo from "../Instructor/GetInstructorInfo";
 import "@react-pdf-viewer/core/lib/styles/index.css";
+import { baseURL } from "../../../basic";
 
 const Mycoursewatch = () => {
   const BoxStyle = {
@@ -130,7 +131,9 @@ const Mycoursewatch = () => {
 
   const getSingleCourse = async () => {
     try {
-      const accessToken = JSON.parse(localStorage.getItem("accessToken") || "");
+      const accessToken = JSON.parse(
+        localStorage.getItem("accessTokenOfUser") || ""
+      );
       if (!accessToken) {
         throw new Error("Access token is missing.");
       }
@@ -139,11 +142,14 @@ const Mycoursewatch = () => {
       //   setCourseId(courseid);
       //   console.log(courseid);
       let result = await axios
-        .get(`http://localhost:5000/course/user/${id}`, {})
-        // headers: {
-        //   Authorization: `Bearer ${accessToken}`,
-        //   // "Content-Type": "multipart/form-data",
-        // },
+        .get(`${baseURL}/course/user/${id}`, {
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "multipart/form-data",
+          },
+        })
+
         .then((result) => {
           console.log(result);
           console.log(result.data.data);
@@ -186,50 +192,50 @@ const Mycoursewatch = () => {
   const handleMycourse = () => {
     navigate("/mycourse");
   };
-  const mycourse = async (res, data) => {
-    try {
-      const accessToken = JSON.parse(
-        localStorage.getItem("accessTokenOfUser") || ""
-      );
-      if (!accessToken) {
-        throw new Error("Access token is missing.");
-      }
-      const userCourse = localStorage.getItem("userbuycourse");
-      console.log(accessToken);
-      console.log(res.razorpay_payment_id);
-      console.log(userCourse);
-      const fields = {
-        paymentId: res.razorpay_payment_id,
-        course: userCourse,
-      };
-      let result = await axios
-        .post(`http://localhost:5000/mycourses`, fields, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            // "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((result) => {
-          console.log("Created");
-          console.log(result);
-          console.log(result.data.data);
-          // toast.success(result.data.message);
-          // closeEvent();
-          setTimeout(() => {
-            navigate("/mycourse");
-          }, 3000);
-        })
-        .catch((err) => {
-          console.log(err.response);
-          // toast.error(err.response.data.message);
-          // console.log(response.data.data.message);
-          console.log(accessToken);
-          // console.log(result);
-        });
-    } catch (error) {
-      console.error("Error during signup:", error);
-    }
-  };
+  // const mycourse = async (res, data) => {
+  //   try {
+  //     const accessToken = JSON.parse(
+  //       localStorage.getItem("accessTokenOfUser") || ""
+  //     );
+  //     if (!accessToken) {
+  //       throw new Error("Access token is missing.");
+  //     }
+  //     const userCourse = localStorage.getItem("userbuycourse");
+  //     console.log(accessToken);
+  //     console.log(res.razorpay_payment_id);
+  //     console.log(userCourse);
+  //     const fields = {
+  //       paymentId: res.razorpay_payment_id,
+  //       course: userCourse,
+  //     };
+  //     let result = await axios
+  //       .post(`http://localhost:5000/mycourses`, fields, {
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //           // "Content-Type": "multipart/form-data",
+  //         },
+  //       })
+  //       .then((result) => {
+  //         console.log("Created");
+  //         console.log(result);
+  //         console.log(result.data.data);
+  //         // toast.success(result.data.message);
+  //         // closeEvent();
+  //         setTimeout(() => {
+  //           navigate("/mycourse");
+  //         }, 3000);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err.response);
+  //         // toast.error(err.response.data.message);
+  //         // console.log(response.data.data.message);
+  //         console.log(accessToken);
+  //         // console.log(result);
+  //       });
+  //   } catch (error) {
+  //     console.error("Error during signup:", error);
+  //   }
+  // };
   const navigation = [
     {
       id: "0",
@@ -429,7 +435,10 @@ const Mycoursewatch = () => {
                       justifyContent="start"
                       alignItems="center"
                     >
-                      <Avatar alt={instructorName} src={instructorImg} />
+                      <Avatar
+                        alt={instructorName}
+                        src={`http://localhost:5000/uploads/${instructorImg}`}
+                      />
                       <Typography
                         gutterBottom
                         component="div"
@@ -619,7 +628,7 @@ const Mycoursewatch = () => {
                               }}
                             >
                               <iframe
-                                src={`http://localhost:5000/uploads/${fileName}`}
+                                src={`${baseURL}/uploads/${fileName}`}
                                 width="800"
                                 height="600"
                               />

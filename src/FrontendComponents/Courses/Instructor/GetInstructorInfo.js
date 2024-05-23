@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles4 from "../singlecourse/FrameComponent2.module.css";
+import { baseURL } from "../../../basic";
+
 const GetInstructorInfo = ({ instructorName, instructorImg }) => {
   return (
     <section className={styles4.homeInner}>
@@ -36,7 +38,7 @@ const GetInstructorInfo = ({ instructorName, instructorImg }) => {
             className={styles4.frameChild}
             loading="lazy"
             alt={instructorName}
-            src={`http://localhost:5000/uploads/${instructorImg}`}
+            src={`${baseURL}/uploads/${instructorImg}`}
           />
           {/* <div className={styles4.iconAndTextParent}>
               <div className={styles4.iconAndText}>
