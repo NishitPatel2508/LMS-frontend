@@ -262,7 +262,7 @@ const Singlecourse = () => {
         receiptId,
       };
       const response = await axios
-        .post("http://localhost:5000/checkout", fields, {
+        .post(`${baseURL}/checkout`, fields, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             // "Content-Type": "multipart/form-data",
