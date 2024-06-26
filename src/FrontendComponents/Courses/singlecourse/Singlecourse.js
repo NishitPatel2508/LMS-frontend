@@ -103,7 +103,7 @@ const Singlecourse = () => {
       let result = await axios
         .get(`${baseURL}/course/user/${reviewCourseId}`, {
           headers: {
-            "ngrok-skip-browser-warning": "true",
+            // "ngrok-skip-browser-warning": "true",
             "Content-Type": "application/json",
           },
         })
