@@ -5,4 +5,4 @@
 
 // https://9c9b-122-170-102-236.ngrok-free.app
 // export const baseURL = "https://bce3-122-170-102-236.ngrok-free.app " http://localhost:5000;
-export const baseURL = "https://lms-backend-puce.vercel.app";
+export const baseURL = "https://lms-backend-puce.vercel.app/";
