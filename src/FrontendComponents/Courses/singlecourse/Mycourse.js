@@ -132,7 +132,7 @@ const Mycourse = () => {
                         alignItems="center"
                       >
                         <Avatar
-                          alt="Remy Sharp"
+                          alt={`${element.course.instructor.name}`}
                           src={`${baseURL}/uploads/${element.course.instructor.profileImg}`}
                         />
                         <Typography
